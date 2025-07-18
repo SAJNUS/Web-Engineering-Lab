@@ -1,0 +1,122 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>Biodata</title> 
+  <link rel="stylesheet" href="4.2 biodata.css"> 
+</head> 
+<body> 
+  <div class="container"> 
+    <h2>BIODATA</h2> 
+    <form action="#" method="post" enctype="multipart/form-data"> 
+      <div class="profile-pic"> 
+        <label>Profile Picture</label><br> 
+        <div class="avatar"> 
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" 
+alt="default profile"> 
+        </div> 
+        <input type="file" accept="image/*"> 
+      </div>       
+ 
+      <label>Full Name *</label> 
+      <input type="text" name="fullname" placeholder="Enter your full name" 
+required> 
+ 
+      <label>Father's Name</label> 
+      <input type="text" name="father" placeholder="Enter your father's name"> 
+ 
+      <label>Mother's Name</label> 
+      <input type="text" name="mother" placeholder="Enter your mother's name"> 
+ 
+      <label>Date of Birth</label> 
+      <input type="date" name="dob"> 
+ 
+      <label>Gender</label> 
+      <div class="radio-group"> 
+        <label><input type="radio" name="gender" value="Male"> Male</label> 
+        <label><input type="radio" name="gender" value="Female"> Female</label> 
+        <label><input type="radio" name="gender" value="Other"> Other</label> 
+      </div> 
+ 
+      <label>Address</label> 
+      <textarea name="address" placeholder="Enter your address"></textarea> 
+ 
+      <label>Phone Number</label> 
+      <input type="tel" name="phone" placeholder="Enter your phone number"> 
+ 
+      <label>Email</label> 
+      <input type="email" name="email" placeholder="Enter your email address"> 
+ 
+      <label>LinkedIn</label> 
+      <input type="url" name="linkedin" placeholder="Enter your LinkedIn profile 
+URL"> 
+ 
+      <label>GitHub</label> 
+      <input type="url" name="github" placeholder="Enter your GitHub profile URL"> 
+ 
+      <label>Education</label> 
+      <textarea name="education" placeholder="Enter your educational 
+qualifications"></textarea> 
+ 
+      <label>Skills</label> 
+      <textarea name="skills" placeholder="Enter your skills"></textarea> 
+ 
+      <label>Languages Kfwn</label> 
+      <input type="text" name="languages" placeholder="Enter languages you know"> 
+ 
+      <label>Marital Status</label> 
+      <div class="checkbox-group"> 
+        <label><input type="checkbox" name="marital" value="Married"> 
+Married</label> 
+        <label><input type="checkbox" name="marital" value="Unmarried"> 
+Unmarried</label> 
+      </div> 
+ 
+      <label>Hobbies</label> 
+      <div class="checkbox-group"> 
+        <label><input type="checkbox" name="hobbies" value="Reading"> 
+Reading</label> 
+        <label><input type="checkbox" name="hobbies" value="Writing"> 
+Writing</label> 
+        <label><input type="checkbox" name="hobbies" value="Traveling"> 
+Traveling</label> 
+        <label><input type="checkbox" name="hobbies" value="Gaming"> 
+Gaming</label> 
+        <label><input type="checkbox" name="hobbies" value="Cooking"> 
+Cooking</label> 
+        <label><input type="checkbox" name="hobbies" value="Music"> Music</label> 
+        <label><input type="checkbox" name="hobbies" value="Sports"> 
+Sports</label> 
+        <label><input type="checkbox" name="hobbies" value="Drawing"> 
+Drawing</label> 
+        <label><input type="checkbox" name="hobbies" value="Photography"> 
+Photography</label> 
+        <label><input type="checkbox" name="hobbies" value="Blogging"> 
+Blogging</label> 
+      </div> 
+ 
+      <label>Blood Group</label> 
+      <select name="blood"> 
+        <option value="">Select Blood Group</option> 
+        <option>O+</option> 
+        <option>O-</option> 
+        <option>A+</option> 
+        <option>A-</option> 
+        <option>B+</option> 
+        <option>B-</option> 
+        <option>AB+</option> 
+        <option>AB-</option> 
+      </select> 
+ 
+      <label>Personal Website</label> 
+      <input type="url" name="website" placeholder="Enter your website URL"> 
+ 
+      <div class="buttons"> 
+        <button type="submit">Submit Bio Data</button> 
+        <button type="reset" class="reset">Reset Form</button> 
+      </div> 
+    </form> 
+  </div> 
+</body> 
+</html>
