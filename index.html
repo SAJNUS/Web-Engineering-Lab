@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harvard University</title>
-    <link rel="stylesheet" href="1.2 style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/8cf9ef7ee3.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="header">
         <div class="logo">
-            <a href="1.1 index.html"><img src="Resources/Harvard Logo.svg" alt="Harvard Logo"></a>
+            <a href="index.html"><img src="images/Harvard Logo.svg" alt="Harvard Logo"></a>
         </div>
         <div class="quote">
             <div class="red_cir"></div>
@@ -27,7 +27,7 @@
     <div class="dropdown-menu" id="dropdownMenu">
         <button class="close-btn" onclick="toggleDropdown()">&times;</button>
         <a href="#">About Me</a>
-        <a href="3.1 portfolio.html">Portfolio</a>
+        <a href="portfolio.html">Portfolio</a>
     </div>
 
     <div class="main">
@@ -35,6 +35,15 @@
         <p>I am a 4th year student in B.Sc in Computer Science and Engineering at Daffodil International University. I am working on this website as my project for Web Engineering Lab of this semester. New in web development world. Still learning.</p>
     </div>
 
-    <script src="1.3 script.js"></script>
+    <script>
+        function toggleDropdown() {
+            const menu = document.getElementById('dropdownMenu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+    </script>
 </body>
 </html>
