@@ -7,7 +7,7 @@
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    background: #1f2937;
+    background: #333333;
     color: #e5e7eb;
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 .portfolio-hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+    background: #A51B31;
     color: white;
     text-align: center;
     position: relative;
@@ -57,7 +57,7 @@ body {
 
 .projects {
     padding: 30px 0;
-    background: #1f2937;
+    background: #333333;
 }
 
 .projects-grid {
@@ -70,7 +70,7 @@ body {
 }
 
 .project-card {
-    background: rgba(255, 255, 255, 0.05);
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
@@ -79,9 +79,10 @@ body {
 }
 
 .project-card:hover {
-    background: rgba(0, 0, 0, 0.5);
+    background: #000000;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
     border-color: transparent;
+    transform: scale(1.05);
 }
 
 .project-card.compact {

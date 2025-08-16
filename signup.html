@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Create Account</title>
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-box">
+            <div class="signup-header">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Icon" class="user-icon">
+                <h2>Create Account</h2>
+                <p>Join us to access biodata form</p>
+            </div>
+            
+            <form id="signupForm" class="signup-form">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                </div>
+                
+                <div class="terms-agreement">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#" class="terms-link">Terms and Conditions</a> and <a href="#" class="terms-link">Privacy Policy</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="signup-btn">Create Account</button>
+            </form>
+            
+            <div class="signup-footer">
+                <p>Already have an account? <a href="login.html" class="login-link">Sign in</a></p>
+                <p><a href="portfolio.html" class="back-link">← Back to Portfolio</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle signup form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const phone = document.getElementById('phone').value;
+            const termsAccepted = document.getElementById('terms').checked;
+            
+            // Validation
+            if (!termsAccepted) {
+                showMessage('Please accept the Terms and Conditions to continue.', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showMessage('Passwords do not match. Please try again.', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showMessage('Password must be at least 6 characters long.', 'error');
+                return;
+            }
+            
+            // Check if username already exists (demo check)
+            if (username.toLowerCase() === 'admin') {
+                showMessage('Username "admin" is already taken. Please choose another username.', 'error');
+                return;
+            }
+            
+            // Simulate successful registration
+            showMessage('Account created successfully! Redirecting to login page...', 'success');
+            
+            // Redirect to login page after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        });
+
+        // Show messages
+        function showMessage(message, type) {
+            // Remove existing message if any
+            const existingMessage = document.querySelector('.message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+
+            // Create new message
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = message;
+            
+            // Insert message at the top of the form
+            const form = document.querySelector('.signup-form');
+            form.insertBefore(messageDiv, form.firstChild);
+            
+            // Remove message after 5 seconds (except success messages)
+            if (type !== 'success') {
+                setTimeout(() => {
+                    messageDiv.remove();
+                }, 5000);
+            }
+        }
+
+        // Real-time password confirmation validation
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            
+            if (confirmPassword && password !== confirmPassword) {
+                this.style.borderColor = '#dc3545';
+            } else {
+                this.style.borderColor = '#e1e5e9';
+            }
+        });
+
+        // Username availability check (demo)
+        document.getElementById('username').addEventListener('blur', function() {
+            const username = this.value.toLowerCase();
+            if (username === 'admin') {
+                this.style.borderColor = '#dc3545';
+                showMessage('Username "admin" is already taken.', 'error');
+            } else if (username) {
+                this.style.borderColor = '#28a745';
+            }
+        });
+    </script>
+</body>
+</html>
