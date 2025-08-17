@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daraz - Online Shopping in Bangladesh</title>
+    <link rel="stylesheet" href="css/daraz.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <div class="top-links">
+                <span>SAVE MORE ON APP</span>
+                <span>BECOME A SELLER</span>
+                <span>HELP & SUPPORT</span>
+                <span>LOGIN</span>
+                <span>SIGN UP</span>
+                <span>বাংলা</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="images/Daraz Logo.png" alt="Daraz Logo">
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search in Daraz">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Banner -->
+    <section class="main-banner">
+        <div class="container">
+            <div class="image-slider">
+                <div class="slider-container">
+                    <div class="slide active">
+                        <img src="images/Fasion Sale.jpg" alt="Fashion Sale">
+                    </div>
+                    <div class="slide">
+                        <img src="images/Electronic Deals.jpg" alt="Electronics Deal">
+                    </div>
+                    <div class="slide">
+                        <img src="images/Home and garden.jpg" alt="Home & Garden">
+                    </div>
+                    <div class="slide">
+                        <img src="images/Smart phone.jpg" alt="Beauty Products">
+                    </div>
+                    <div class="slide">
+                        <img src="images/Sports.jpg" alt="Sports & Outdoor">
+                    </div>
+                </div>
+                
+                <!-- Navigation dots -->
+                <div class="slider-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
+                
+                <!-- Navigation arrows -->
+                <button class="slider-btn prev" onclick="plusSlides(-1)">❮</button>
+                <button class="slider-btn next" onclick="plusSlides(1)">❯</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let slideIndex = 1;
+        let slideInterval;
+
+        // Initialize slider
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlides(slideIndex);
+            autoSlide();
+        });
+
+        // Auto slide function
+        function autoSlide() {
+            slideInterval = setInterval(function() {
+                slideIndex++;
+                if (slideIndex > 5) {
+                    slideIndex = 1;
+                }
+                showSlides(slideIndex);
+            }, 4000); // Change slide every 4 seconds
+        }
+
+        // Manual navigation
+        function plusSlides(n) {
+            clearInterval(slideInterval);
+            slideIndex += n;
+            if (slideIndex > 5) {
+                slideIndex = 1;
+            }
+            if (slideIndex < 1) {
+                slideIndex = 5;
+            }
+            showSlides(slideIndex);
+            autoSlide(); // Restart auto slide
+        }
+
+        function currentSlide(n) {
+            clearInterval(slideInterval);
+            slideIndex = n;
+            showSlides(slideIndex);
+            autoSlide(); // Restart auto slide
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex - 1].classList.add("active");
+            dots[slideIndex - 1].classList.add("active");
+        }
+    </script>
+
+    <!-- Flash Sale Section -->
+    <section class="flash-sale">
+        <div class="container">
+            <div class="section-header">
+                <h2>Flash Sale</h2>
+                <span class="sale-status">On Sale Now</span>
+                <button class="shop-all-btn">SHOP ALL PRODUCTS</button>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/Fab Liquid.jpg" alt="Fab Liquid Detergent">
+                    </div>
+                    <h3>Fab Liquid Detergent Pouch for Machine &...</h3>
+                    <div class="price">
+                        <span class="current-price">৳209</span>
+                        <span class="original-price">৳289</span>
+                        <span class="discount">-16%</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/Mini Electric.jpg" alt="Mini Electric Rice Cooker">
+                    </div>
+                    <h3>Mini Electric Rice Cooker 1.8 L Non-stick Cooking...</h3>
+                    <div class="price">
+                        <span class="current-price">৳649</span>
+                        <span class="original-price">৳1,400</span>
+                        <span class="discount">-54%</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/Shan Sindhi.jpg" alt="Shan Sindhi Biryani">
+                    </div>
+                    <h3>Shan Sindhi Biryani (60g) EXP 20/11/25</h3>
+                    <div class="price">
+                        <span class="current-price">৳29</span>
+                        <span class="original-price">৳120</span>
+                        <span class="discount">-76%</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/30X30 cm Car Bike.jpg" alt="Car Bike Wash Cloth">
+                    </div>
+                    <h3>30X30 cm Car Bike Wash Double Layer Ultra Soft...</h3>
+                    <div class="price">
+                        <span class="current-price">৳63</span>
+                        <span class="original-price">৳299</span>
+                        <span class="discount">-69%</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/Hand Made.jpg" alt="Hand Made Saffron Soap">
+                    </div>
+                    <h3>Hand Made Real Saffron Soap Milk Bar Soap 90g...</h3>
+                    <div class="price">
+                        <span class="current-price">৳37</span>
+                        <span class="original-price">৳150</span>
+                        <span class="discount">-75%</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+</html>
