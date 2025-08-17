@@ -1,60 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alibaba</title>
-  <link rel="stylesheet" href="css/alibaba.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alibaba.com - B2B Marketplace</title>
+    <link rel="stylesheet" href="css/alibaba.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-main">
-      <img src="https://s.alicdn.com/@img/imgextra/i4/O1CN011ZJg9l24hKaeQlVNh_!!6000000007422-2-tps-1380-165.png" alt="Alibaba Logo" class="logo" />
-      <nav class="nav-links">
-        <a href="#">All categories</a>
-        <a href="#">Featured selections</a>
-        <a href="#">Order protections</a>
-        <a href="#">AI sourcing agent</a>
-        <a href="#">Buyer Central</a>
-        <a href="#">Help Center</a>
-        <a href="#">App & extension</a>
-        <a href="8.1 alibaba registration.html">Become a supplier</a>
-      </nav>
-      <div class="user-options">
-        <span>Deliver to: <img src="https://flagcdn.com/us.svg" alt="US Flag" class="flag"> US</span>
-        <span>🌐 English-USD</span>
-        <span>💬</span>
-        <span>📝</span>
-        <span>🛒</span>
-        <span>👤 Sign in</span>
-      </div>
+
+    <header class="site-header">
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <img src="images/Ali baba logo.png" alt="Alibaba.com" class="logo">
+            </div>
+            <div class="top-bar-right">
+                <a href="#" class="header-link deliver-link">
+                    <i class="fa-solid fa-location-dot"></i> Deliver to: 🇧🇩 BD
+                </a>
+                <a href="#" class="header-link">
+                    <i class="fa-solid fa-globe"></i> English-BDT
+                </a>
+                <a href="#" class="header-link">
+                    <i class="fa-solid fa-shopping-cart"></i>
+                </a>
+                <a href="#" class="header-link">
+                    <i class="fa-solid fa-user"></i> Sign in
+                </a>
+                <a href="alilogin.html" class="btn btn-primary">Create account</a>
+            </div>
+        </div>
+        <div class="main-nav">
+            <div class="main-nav-left">
+                <a href="#" class="nav-link categories-link"><i class="fa-solid fa-bars"></i> All categories</a>
+                <a href="#" class="nav-link">Featured selections</a>
+                <a href="#" class="nav-link">Order protections</a>
+            </div>
+            <div class="main-nav-right">
+                <a href="#" class="nav-link">AI sourcing agent</a>
+                <a href="#" class="nav-link">Buyer Central</a>
+                <a href="#" class="nav-link">Help Center</a>
+                <a href="#" class="nav-link">App & extension</a>
+                <a href="#" class="nav-link">Become a supplier</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="hero-section">
+        <div class="hero-content">
+            <p class="learn-more">
+                <i class="fa-regular fa-circle-play"></i> Learn about Alibaba.com
+            </p>
+            <h1>The leading B2B ecommerce platform for global trade</h1>
+
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <input type="text" placeholder="lululemon">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+                <button class="btn btn-search"><i class="fa-solid fa-search"></i> Search</button>
+            </div>
+
+            <div class="frequently-searched">
+                <span>Frequently searched:</span>
+                <a href="#">laptop</a>
+                <a href="#">iphones 15 pro max</a>
+                <a href="#">samsung s24 ultra</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Product Cards Section -->
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="images/Smart phone.jpg" alt="Smartphone" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Latest Smartphones</h3>
+                        <p class="product-price">$299 - $999</p>
+                        <p class="product-description">High-quality smartphones with latest features</p>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half"></i>
+                            <span>(4.5)</span>
+                        </div>
+                        <button class="btn btn-primary">Contact Supplier</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/Electronic Deals.jpg" alt="Electronics" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Electronic Components</h3>
+                        <p class="product-price">$5 - $500</p>
+                        <p class="product-description">Quality electronic components and accessories</p>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                        <button class="btn btn-primary">Contact Supplier</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/Mini Electric.jpg" alt="Mini Electric Car" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Mini Electric Vehicles</h3>
+                        <p class="product-price">$5,000 - $15,000</p>
+                        <p class="product-description">Eco-friendly mini electric cars and bikes</p>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                            <span>(4.2)</span>
+                        </div>
+                        <button class="btn btn-primary">Contact Supplier</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/Home and garden.jpg" alt="Home & Garden" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Home & Garden Supplies</h3>
+                        <p class="product-price">$10 - $200</p>
+                        <p class="product-description">Quality home and garden products on sale</p>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half"></i>
+                            <span>(4.3)</span>
+                        </div>
+                        <button class="btn btn-primary">Contact Supplier</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/Sports.jpg" alt="Sports Equipment" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-title">Sports Equipment</h3>
+                        <p class="product-price">$15 - $300</p>
+                        <p class="product-description">Professional sports equipment and gear</p>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <span>(4.8)</span>
+                        </div>
+                        <button class="btn btn-primary">Contact Supplier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="floating-buttons">
+        <a href="#" class="float-btn"><i class="fa-solid fa-qrcode"></i></a>
+        <a href="#" class="float-btn"><i class="fa-solid fa-question"></i></a>
     </div>
 
-    <div class="search-bar">
-      <div class="tabs">
-        <span class="active">Products</span>
-        <span>Manufacturers</span>
-        <span>Regional supplies</span>
-      </div>
-      <div class="search-input">
-        <input type="text" placeholder="mobile phone cases">
-        <button class="search-btn">Search</button>
-        <button class="image-search">📷 Image Search</button>
-      </div>
-      <div class="frequent-searches">
-        Frequently searched: iphones 15 pro max, labubu, moissanite watch, electric bike, surron, cologne
-      </div>
-    </div>
-  </header>
-
-  <section class="welcome-section">
-    <p>Welcome to Alibaba.com</p>
-    <div class="features">
-      <span>🧠 Accio AI</span>
-      <span>🎯 Request for Quotation</span>
-      <span>⚡ Fast customization</span>
-      <span>🚛 Alibaba.com Logistics</span>
-    </div>
-  </section>
 </body>
 </html>
