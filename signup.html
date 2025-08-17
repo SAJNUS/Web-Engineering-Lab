@@ -41,6 +41,16 @@
                 <div class="input-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <div class="password-requirements">
+                        <p class="requirements-title">Password must contain:</p>
+                        <ul class="requirements-list">
+                            <li id="uppercase" class="requirement">At least one uppercase letter (A-Z)</li>
+                            <li id="lowercase" class="requirement">At least one lowercase letter (a-z)</li>
+                            <li id="number" class="requirement">At least one number (0-9)</li>
+                            <li id="special" class="requirement">At least one special character (!@#$%^&*)</li>
+                            <li id="length" class="requirement">Minimum 8 characters long</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="input-group">
@@ -57,7 +67,7 @@
                     <label class="checkbox-label">
                         <input type="checkbox" id="terms" required>
                         <span class="checkmark"></span>
-                        I agree to the <a href="#" class="terms-link">Terms and Conditions</a> and <a href="#" class="terms-link">Privacy Policy</a>
+                        I agree to the<a href="#" class="terms-link"> Terms and Conditions</a> and <a href="#" class="terms-link">Privacy Policy</a>
                     </label>
                 </div>
                 
@@ -96,8 +106,10 @@
                 return;
             }
             
-            if (password.length < 6) {
-                showMessage('Password must be at least 6 characters long.', 'error');
+            // Enhanced password validation
+            const passwordValidation = validatePassword(password);
+            if (!passwordValidation.isValid) {
+                showMessage('Password does not meet the required criteria: ' + passwordValidation.errors.join(', '), 'error');
                 return;
             }
             
@@ -114,6 +126,51 @@
             setTimeout(() => {
                 window.location.href = 'login.html';
             }, 2000);
+        });
+
+        // Password validation function
+        function validatePassword(password) {
+            const criteria = {
+                uppercase: /[A-Z]/.test(password),
+                lowercase: /[a-z]/.test(password),
+                number: /[0-9]/.test(password),
+                special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password),
+                length: password.length >= 8
+            };
+            
+            const errors = [];
+            if (!criteria.uppercase) errors.push('uppercase letter');
+            if (!criteria.lowercase) errors.push('lowercase letter');
+            if (!criteria.number) errors.push('number');
+            if (!criteria.special) errors.push('special character');
+            if (!criteria.length) errors.push('minimum 8 characters');
+            
+            return {
+                isValid: Object.values(criteria).every(Boolean),
+                criteria: criteria,
+                errors: errors
+            };
+        }
+
+        // Real-time password validation
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const validation = validatePassword(password);
+            
+            // Update visual indicators
+            const requirements = document.querySelectorAll('.requirement');
+            requirements.forEach(req => {
+                const criteriaName = req.id;
+                if (validation.criteria[criteriaName]) {
+                    req.classList.add('valid');
+                    req.classList.remove('invalid');
+                } else if (password.length > 0) {
+                    req.classList.add('invalid');
+                    req.classList.remove('valid');
+                } else {
+                    req.classList.remove('valid', 'invalid');
+                }
+            });
         });
 
         // Show messages

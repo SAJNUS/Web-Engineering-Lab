@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif ($password !== $confirmPassword) {
         $message = 'Passwords do not match.';
         $messageType = 'error';
-    } elseif (strlen($password) < 6) {
-        $message = 'Password must be at least 6 characters long.';
+    } elseif (!validatePassword($password)) {
+        $message = 'Password must contain at least 8 characters including uppercase, lowercase, number, and special character.';
         $messageType = 'error';
     } else {
         $conn = getDBConnection();
@@ -113,6 +113,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="input-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <div class="password-requirements">
+                        <p class="requirements-title">Password must contain:</p>
+                        <ul class="requirements-list">
+                            <li id="uppercase" class="requirement">At least one uppercase letter (A-Z)</li>
+                            <li id="lowercase" class="requirement">At least one lowercase letter (a-z)</li>
+                            <li id="number" class="requirement">At least one number (0-9)</li>
+                            <li id="special" class="requirement">At least one special character (!@#$%^&*)</li>
+                            <li id="length" class="requirement">Minimum 8 characters long</li>
+                        </ul>
+                    </div>
                 </div>
                 
                 <div class="input-group">
@@ -144,6 +154,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <script>
+        // Password validation function
+        function validatePassword(password) {
+            const criteria = {
+                uppercase: /[A-Z]/.test(password),
+                lowercase: /[a-z]/.test(password),
+                number: /[0-9]/.test(password),
+                special: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password),
+                length: password.length >= 8
+            };
+            
+            return {
+                isValid: Object.values(criteria).every(Boolean),
+                criteria: criteria
+            };
+        }
+
+        // Real-time password validation
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const validation = validatePassword(password);
+            
+            // Update visual indicators
+            const requirements = document.querySelectorAll('.requirement');
+            requirements.forEach(req => {
+                const criteriaName = req.id;
+                if (validation.criteria[criteriaName]) {
+                    req.classList.add('valid');
+                    req.classList.remove('invalid');
+                } else if (password.length > 0) {
+                    req.classList.add('invalid');
+                    req.classList.remove('valid');
+                } else {
+                    req.classList.remove('valid', 'invalid');
+                }
+            });
+        });
+
         // Real-time password confirmation validation
         document.getElementById('confirmPassword').addEventListener('input', function() {
             const password = document.getElementById('password').value;

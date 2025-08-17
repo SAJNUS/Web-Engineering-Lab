@@ -61,6 +61,14 @@ a:hover {
     margin-bottom: 50px;
 }
 
+.form-title {
+    color: #ff6a00;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 0 30px 0;
+}
+
 /* Form Elements */
 .form-group {
     margin-bottom: 20px;

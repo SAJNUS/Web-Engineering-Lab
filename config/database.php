@@ -128,4 +128,34 @@ function hashPassword($password) {
 function verifyPassword($password, $hash) {
     return password_verify($password, $hash);
 }
+
+// Validate password strength
+function validatePassword($password) {
+    // Check minimum length (8 characters)
+    if (strlen($password) < 8) {
+        return false;
+    }
+    
+    // Check for uppercase letter
+    if (!preg_match('/[A-Z]/', $password)) {
+        return false;
+    }
+    
+    // Check for lowercase letter
+    if (!preg_match('/[a-z]/', $password)) {
+        return false;
+    }
+    
+    // Check for number
+    if (!preg_match('/[0-9]/', $password)) {
+        return false;
+    }
+    
+    // Check for special character
+    if (!preg_match('/[!@#$%^&*()_+\-=\[\]{};\':"\\|,.<>\/?]/', $password)) {
+        return false;
+    }
+    
+    return true;
+}
 ?>
