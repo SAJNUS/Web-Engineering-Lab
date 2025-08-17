@@ -100,6 +100,22 @@ body {
     display: block; 
     margin-top: 15px; 
     font-weight: bold; 
+  }
+
+  /* Make asterisks (*) red for required fields */
+  .required-asterisk {
+    color: #dc3545;
+    font-weight: bold;
+  }
+
+  /* Error message styles for validation */
+  .error-message {
+    color: #dc3545 !important;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    display: none;
+    font-weight: normal;
   } 
    
   input[type="text"], 

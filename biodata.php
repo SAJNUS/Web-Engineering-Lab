@@ -154,7 +154,7 @@ $conn->close();
     
     <form action="" method="post" enctype="multipart/form-data"> 
       <div class="profile-pic"> 
-        <label>Profile Picture</label><br> 
+        <label>Profile Picture <span class="required-asterisk">*</span></label><br> 
         <div class="avatar"> 
           <?php if ($biodata && !empty($biodata['profile_picture'])): ?>
             <img src="<?php echo htmlspecialchars($biodata['profile_picture']); ?>" alt="Profile Picture">
@@ -165,32 +165,32 @@ $conn->close();
         <input type="file" name="profile_picture" accept="image/*"> 
       </div>       
  
-      <label>Full Name *</label> 
+      <label>Full Name <span class="required-asterisk">*</span></label> 
       <input type="text" name="fullname" placeholder="Enter your full name" required value="<?php echo $biodata ? htmlspecialchars($biodata['full_name']) : ''; ?>"> 
  
-      <label>Father's Name</label> 
+      <label>Father's Name <span class="required-asterisk">*</span></label> 
       <input type="text" name="father" placeholder="Enter your father's name" value="<?php echo $biodata ? htmlspecialchars($biodata['father_name']) : ''; ?>"> 
  
-      <label>Mother's Name</label> 
+      <label>Mother's Name <span class="required-asterisk">*</span></label> 
       <input type="text" name="mother" placeholder="Enter your mother's name" value="<?php echo $biodata ? htmlspecialchars($biodata['mother_name']) : ''; ?>"> 
  
-      <label>Date of Birth</label> 
+      <label>Date of Birth <span class="required-asterisk">*</span></label> 
       <input type="date" name="dob" value="<?php echo $biodata ? $biodata['date_of_birth'] : ''; ?>"> 
  
-      <label>Gender</label> 
+      <label>Gender <span class="required-asterisk">*</span></label> 
       <div class="radio-group"> 
         <label><input type="radio" name="gender" value="Male" <?php echo ($biodata && $biodata['gender'] == 'Male') ? 'checked' : ''; ?>> Male</label> 
         <label><input type="radio" name="gender" value="Female" <?php echo ($biodata && $biodata['gender'] == 'Female') ? 'checked' : ''; ?>> Female</label> 
         <label><input type="radio" name="gender" value="Other" <?php echo ($biodata && $biodata['gender'] == 'Other') ? 'checked' : ''; ?>> Other</label> 
       </div> 
  
-      <label>Address</label> 
+      <label>Address <span class="required-asterisk">*</span></label> 
       <textarea name="address" placeholder="Enter your address"><?php echo $biodata ? htmlspecialchars($biodata['address']) : ''; ?></textarea> 
  
-      <label>Phone Number</label> 
+      <label>Phone Number <span class="required-asterisk">*</span></label> 
       <input type="tel" name="phone" placeholder="Enter your phone number" value="<?php echo $biodata ? htmlspecialchars($biodata['phone']) : ''; ?>"> 
  
-      <label>Email</label> 
+      <label>Email <span class="required-asterisk">*</span></label> 
       <input type="email" name="email" placeholder="Enter your email address" value="<?php echo $biodata ? htmlspecialchars($biodata['email']) : ''; ?>"> 
  
       <label>LinkedIn</label> 
@@ -199,16 +199,16 @@ $conn->close();
       <label>GitHub</label> 
       <input type="url" name="github" placeholder="Enter your GitHub profile URL" value="<?php echo $biodata ? htmlspecialchars($biodata['github']) : ''; ?>"> 
  
-      <label>Education</label> 
+      <label>Education <span class="required-asterisk">*</span></label> 
       <textarea name="education" placeholder="Enter your educational qualifications"><?php echo $biodata ? htmlspecialchars($biodata['education']) : ''; ?></textarea> 
  
-      <label>Skills</label> 
+      <label>Skills <span class="required-asterisk">*</span></label> 
       <textarea name="skills" placeholder="Enter your skills"><?php echo $biodata ? htmlspecialchars($biodata['skills']) : ''; ?></textarea> 
  
-      <label>Languages Known</label> 
+      <label>Languages Known <span class="required-asterisk">*</span></label> 
       <input type="text" name="languages" placeholder="Enter languages you know" value="<?php echo $biodata ? htmlspecialchars($biodata['languages']) : ''; ?>"> 
  
-      <label>Marital Status</label> 
+      <label>Marital Status <span class="required-asterisk">*</span></label> 
       <div class="checkbox-group"> 
         <?php
         $maritalStatuses = $biodata ? explode(', ', $biodata['marital_status']) : [];
@@ -217,7 +217,7 @@ $conn->close();
         <label><input type="checkbox" name="marital[]" value="Unmarried" <?php echo in_array('Unmarried', $maritalStatuses) ? 'checked' : ''; ?>> Unmarried</label> 
       </div> 
  
-      <label>Hobbies</label> 
+      <label>Hobbies <span class="required-asterisk">*</span></label> 
       <div class="checkbox-group"> 
         <?php
         $userHobbies = $biodata ? explode(', ', $biodata['hobbies']) : [];
@@ -229,7 +229,7 @@ $conn->close();
         ?>
       </div> 
  
-      <label>Blood Group</label> 
+      <label>Blood Group <span class="required-asterisk">*</span></label> 
       <select name="blood"> 
         <option value="">Select Blood Group</option> 
         <?php
@@ -252,6 +252,316 @@ $conn->close();
         <button type="reset" class="reset">Reset</button> 
       </div> 
     </form> 
-  </div> 
+  </div>
+
+  <script>
+    // Add IDs to form elements for validation
+    document.querySelector('input[name="profile_picture"]').id = 'profilePic';
+    document.querySelector('input[name="fullname"]').id = 'fullname';
+    document.querySelector('input[name="father"]').id = 'father';
+    document.querySelector('input[name="mother"]').id = 'mother';
+    document.querySelector('input[name="dob"]').id = 'dob';
+    document.querySelector('textarea[name="address"]').id = 'address';
+    document.querySelector('input[name="phone"]').id = 'phone';
+    document.querySelector('input[name="email"]').id = 'email';
+    document.querySelector('textarea[name="education"]').id = 'education';
+    document.querySelector('textarea[name="skills"]').id = 'skills';
+    document.querySelector('input[name="languages"]').id = 'languages';
+    document.querySelector('select[name="blood"]').id = 'blood';
+
+    // Add error divs after each required field
+    function addErrorDiv(fieldId, errorId) {
+      const field = document.getElementById(fieldId);
+      if (field && !document.getElementById(errorId)) {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = errorId;
+        errorDiv.className = 'error-message';
+        errorDiv.style.display = 'none';
+        field.parentNode.insertBefore(errorDiv, field.nextSibling);
+      }
+    }
+
+    // Add error divs for all required fields
+    addErrorDiv('profilePic', 'profilePic-error');
+    addErrorDiv('fullname', 'fullname-error');
+    addErrorDiv('father', 'father-error');
+    addErrorDiv('mother', 'mother-error');
+    addErrorDiv('dob', 'dob-error');
+    addErrorDiv('address', 'address-error');
+    addErrorDiv('phone', 'phone-error');
+    addErrorDiv('email', 'email-error');
+    addErrorDiv('education', 'education-error');
+    addErrorDiv('skills', 'skills-error');
+    addErrorDiv('languages', 'languages-error');
+    addErrorDiv('blood', 'blood-error');
+
+    // Form validation
+    document.querySelector('form').addEventListener('submit', function(e) {
+      let hasErrors = false;
+      
+      // Clear previous errors
+      clearAllErrors();
+      
+      // Validate Profile Picture (only required if no existing picture)
+      const profilePic = document.getElementById('profilePic');
+      const existingPicture = document.querySelector('.avatar img');
+      const hasExistingPicture = existingPicture && !existingPicture.src.includes('3135715.png'); // Check if not default image
+      
+      if (!hasExistingPicture && (!profilePic.files || profilePic.files.length === 0)) {
+        showError('profilePic', 'This field is required');
+        hasErrors = true;
+      }
+      
+      // Validate Full Name
+      const fullname = document.getElementById('fullname');
+      if (!fullname.value.trim()) {
+        showError('fullname', 'This field is required');
+        hasErrors = true;
+      }
+      
+      // Validate Father's Name
+      const father = document.getElementById('father');
+      if (!father.value.trim()) {
+        showError('father', 'This field is required');
+        hasErrors = true;
+      }
+      
+      // Validate Mother's Name
+      const mother = document.getElementById('mother');
+      if (!mother.value.trim()) {
+        showError('mother', 'This field is required');
+        hasErrors = true;
+      }
+      
+      // Validate Date of Birth
+      const dob = document.getElementById('dob');
+      if (!dob.value) {
+        showError('dob', 'This field is required');
+        hasErrors = true;
+      }
+      
+      // Validate Gender
+      const genderSelected = document.querySelector('input[name="gender"]:checked');
+      if (!genderSelected) {
+        showGenderError('Please select a gender');
+        hasErrors = true;
+      }
+      
+      // Validate Address
+      const address = document.getElementById('address');
+      if (!address.value.trim()) {
+        showError('address', 'This field is required');
+        hasErrors = true;
+      }
+      
+      // Validate Phone Number
+      const phone = document.getElementById('phone');
+      if (!phone.value.trim()) {
+        showError('phone', 'This field is required');
+        hasErrors = true;
+      }
+      
+      // Validate Email
+      const email = document.getElementById('email');
+      if (!email.value.trim()) {
+        showError('email', 'This field is required');
+        hasErrors = true;
+      }
+      
+      // Validate Education
+      const education = document.getElementById('education');
+      if (!education.value.trim()) {
+        showError('education', 'This field is required');
+        hasErrors = true;
+      }
+      
+      // Validate Skills
+      const skills = document.getElementById('skills');
+      if (!skills.value.trim()) {
+        showError('skills', 'This field is required');
+        hasErrors = true;
+      }
+      
+      // Validate Languages
+      const languages = document.getElementById('languages');
+      if (!languages.value.trim()) {
+        showError('languages', 'This field is required');
+        hasErrors = true;
+      }
+      
+      // Validate Marital Status
+      const maritalSelected = document.querySelector('input[name="marital[]"]:checked');
+      if (!maritalSelected) {
+        showMaritalError('Please select marital status');
+        hasErrors = true;
+      }
+      
+      // Validate Hobbies
+      const hobbiesSelected = document.querySelector('input[name="hobbies[]"]:checked');
+      if (!hobbiesSelected) {
+        showHobbiesError('Please select at least one hobby');
+        hasErrors = true;
+      }
+      
+      // Validate Blood Group
+      const blood = document.getElementById('blood');
+      if (!blood.value) {
+        showError('blood', 'This field is required');
+        hasErrors = true;
+      }
+      
+      if (hasErrors) {
+        e.preventDefault(); // Prevent form submission
+      }
+    });
+    
+    function showError(fieldId, message) {
+      const field = document.getElementById(fieldId);
+      const errorDiv = document.getElementById(fieldId + '-error');
+      
+      if (field) {
+        field.style.border = '2px solid #dc3545';
+      }
+      
+      if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+      }
+    }
+    
+    function showGenderError(message) {
+      const genderGroup = document.querySelector('.radio-group');
+      if (genderGroup) {
+        genderGroup.style.border = '2px solid #dc3545';
+        genderGroup.style.padding = '8px';
+        genderGroup.style.borderRadius = '6px';
+        
+        // Add error message after gender group
+        let errorDiv = document.getElementById('gender-error');
+        if (!errorDiv) {
+          errorDiv = document.createElement('div');
+          errorDiv.id = 'gender-error';
+          errorDiv.className = 'error-message';
+          genderGroup.parentNode.insertBefore(errorDiv, genderGroup.nextSibling);
+        }
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+      }
+    }
+    
+    function showMaritalError(message) {
+      const maritalGroups = document.querySelectorAll('.checkbox-group');
+      const maritalGroup = maritalGroups[0]; // First checkbox group is marital status
+      if (maritalGroup) {
+        maritalGroup.style.border = '2px solid #dc3545';
+        maritalGroup.style.padding = '8px';
+        maritalGroup.style.borderRadius = '6px';
+        
+        let errorDiv = document.getElementById('marital-error');
+        if (!errorDiv) {
+          errorDiv = document.createElement('div');
+          errorDiv.id = 'marital-error';
+          errorDiv.className = 'error-message';
+          maritalGroup.parentNode.insertBefore(errorDiv, maritalGroup.nextSibling);
+        }
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+      }
+    }
+    
+    function showHobbiesError(message) {
+      const hobbiesGroups = document.querySelectorAll('.checkbox-group');
+      const hobbiesGroup = hobbiesGroups[1]; // Second checkbox group is hobbies
+      if (hobbiesGroup) {
+        hobbiesGroup.style.border = '2px solid #dc3545';
+        hobbiesGroup.style.padding = '8px';
+        hobbiesGroup.style.borderRadius = '6px';
+        
+        let errorDiv = document.getElementById('hobbies-error');
+        if (!errorDiv) {
+          errorDiv = document.createElement('div');
+          errorDiv.id = 'hobbies-error';
+          errorDiv.className = 'error-message';
+          hobbiesGroup.parentNode.insertBefore(errorDiv, hobbiesGroup.nextSibling);
+        }
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+      }
+    }
+    
+    function clearAllErrors() {
+      // Clear error messages
+      const errorMessages = document.querySelectorAll('.error-message');
+      errorMessages.forEach(error => {
+        error.style.display = 'none';
+        error.textContent = '';
+      });
+      
+      // Reset field borders
+      const inputs = document.querySelectorAll('input, textarea, select');
+      inputs.forEach(input => {
+        input.style.border = '';
+      });
+      
+      // Reset group borders
+      const groups = document.querySelectorAll('.radio-group, .checkbox-group');
+      groups.forEach(group => {
+        group.style.border = '';
+        group.style.padding = '';
+      });
+    }
+    
+    // Clear errors when user starts typing/selecting
+    document.querySelectorAll('input, textarea, select').forEach(field => {
+      field.addEventListener('input', function() {
+        this.style.border = '';
+        const errorDiv = document.getElementById(this.id + '-error');
+        if (errorDiv) {
+          errorDiv.style.display = 'none';
+        }
+      });
+    });
+    
+    // Clear gender error when selected
+    document.querySelectorAll('input[name="gender"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const genderGroup = document.querySelector('.radio-group');
+        const genderError = document.getElementById('gender-error');
+        if (genderGroup) {
+          genderGroup.style.border = '';
+          genderGroup.style.padding = '';
+        }
+        if (genderError) genderError.style.display = 'none';
+      });
+    });
+    
+    // Clear marital error when selected
+    document.querySelectorAll('input[name="marital[]"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const maritalGroups = document.querySelectorAll('.checkbox-group');
+        const maritalGroup = maritalGroups[0];
+        const maritalError = document.getElementById('marital-error');
+        if (maritalGroup) {
+          maritalGroup.style.border = '';
+          maritalGroup.style.padding = '';
+        }
+        if (maritalError) maritalError.style.display = 'none';
+      });
+    });
+    
+    // Clear hobbies error when selected
+    document.querySelectorAll('input[name="hobbies[]"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const hobbiesGroups = document.querySelectorAll('.checkbox-group');
+        const hobbiesGroup = hobbiesGroups[1];
+        const hobbiesError = document.getElementById('hobbies-error');
+        if (hobbiesGroup) {
+          hobbiesGroup.style.border = '';
+          hobbiesGroup.style.padding = '';
+        }
+        if (hobbiesError) hobbiesError.style.display = 'none';
+      });
+    });
+  </script>
 </body> 
 </html>
