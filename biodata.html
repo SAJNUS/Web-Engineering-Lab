@@ -9,72 +9,84 @@
 <body> 
   <div class="container"> 
     <h2>BIODATA</h2> 
-    <form action="#" method="post" enctype="multipart/form-data"> 
+    <form id="biodataForm" action="#" method="post" enctype="multipart/form-data"> 
       <div class="profile-pic"> 
-        <label>Profile Picture</label><br> 
+        <label>Profile Picture *</label><br> 
         <div class="avatar"> 
           <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" 
 alt="default profile"> 
         </div> 
-        <input type="file" accept="image/*"> 
+        <input type="file" id="profilePic" name="profilePic" accept="image/*"> 
+        <div class="error-message" id="profilePic-error"></div>
       </div>       
  
       <label>Full Name *</label> 
-      <input type="text" name="fullname" placeholder="Enter your full name" 
-required> 
+      <input type="text" id="fullname" name="fullname" placeholder="Enter your full name"> 
+      <div class="error-message" id="fullname-error"></div>
  
-      <label>Father's Name</label> 
-      <input type="text" name="father" placeholder="Enter your father's name"> 
+      <label>Father's Name *</label> 
+      <input type="text" id="father" name="father" placeholder="Enter your father's name"> 
+      <div class="error-message" id="father-error"></div>
  
-      <label>Mother's Name</label> 
-      <input type="text" name="mother" placeholder="Enter your mother's name"> 
+      <label>Mother's Name *</label> 
+      <input type="text" id="mother" name="mother" placeholder="Enter your mother's name"> 
+      <div class="error-message" id="mother-error"></div> 
  
-      <label>Date of Birth</label> 
-      <input type="date" name="dob"> 
+      <label>Date of Birth *</label> 
+      <input type="date" id="dob" name="dob"> 
+      <div class="error-message" id="dob-error"></div>
  
-      <label>Gender</label> 
-      <div class="radio-group"> 
+      <label>Gender *</label> 
+      <div class="radio-group" id="gender-group"> 
         <label><input type="radio" name="gender" value="Male"> Male</label> 
         <label><input type="radio" name="gender" value="Female"> Female</label> 
         <label><input type="radio" name="gender" value="Other"> Other</label> 
       </div> 
+      <div class="error-message" id="gender-error"></div>
  
-      <label>Address</label> 
-      <textarea name="address" placeholder="Enter your address"></textarea> 
+      <label>Address *</label> 
+      <textarea id="address" name="address" placeholder="Enter your address"></textarea> 
+      <div class="error-message" id="address-error"></div> 
  
-      <label>Phone Number</label> 
-      <input type="tel" name="phone" placeholder="Enter your phone number"> 
+      <label>Phone Number *</label> 
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"> 
+      <div class="error-message" id="phone-error"></div>
  
-      <label>Email</label> 
-      <input type="email" name="email" placeholder="Enter your email address"> 
+      <label>Email *</label> 
+      <input type="email" id="email" name="email" placeholder="Enter your email address"> 
+      <div class="error-message" id="email-error"></div> 
  
       <label>LinkedIn</label> 
-      <input type="url" name="linkedin" placeholder="Enter your LinkedIn profile 
+      <input type="url" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn profile 
 URL"> 
  
       <label>GitHub</label> 
-      <input type="url" name="github" placeholder="Enter your GitHub profile URL"> 
+      <input type="url" id="github" name="github" placeholder="Enter your GitHub profile URL"> 
  
-      <label>Education</label> 
-      <textarea name="education" placeholder="Enter your educational 
+      <label>Education *</label> 
+      <textarea id="education" name="education" placeholder="Enter your educational 
 qualifications"></textarea> 
+      <div class="error-message" id="education-error"></div>
  
-      <label>Skills</label> 
-      <textarea name="skills" placeholder="Enter your skills"></textarea> 
+      <label>Skills *</label> 
+      <textarea id="skills" name="skills" placeholder="Enter your skills"></textarea> 
+      <div class="error-message" id="skills-error"></div>
  
-      <label>Languages Kfwn</label> 
-      <input type="text" name="languages" placeholder="Enter languages you know"> 
+      <label>Languages Known *</label> 
+      <input type="text" id="languages" name="languages" placeholder="Enter languages you know"> 
+      <div class="error-message" id="languages-error"></div>
  
-      <label>Marital Status</label> 
-      <div class="checkbox-group"> 
+      <label>Marital Status *</label> 
+      <div class="checkbox-group" id="marital-group"> 
         <label><input type="checkbox" name="marital" value="Married"> 
 Married</label> 
         <label><input type="checkbox" name="marital" value="Unmarried"> 
 Unmarried</label> 
       </div> 
+      <div class="error-message" id="marital-error"></div>
  
-      <label>Hobbies</label> 
-      <div class="checkbox-group"> 
+      <label>Hobbies *</label> 
+      <div class="checkbox-group" id="hobbies-group"> 
         <label><input type="checkbox" name="hobbies" value="Reading"> 
 Reading</label> 
         <label><input type="checkbox" name="hobbies" value="Writing"> 
@@ -95,9 +107,10 @@ Photography</label>
         <label><input type="checkbox" name="hobbies" value="Blogging"> 
 Blogging</label> 
       </div> 
+      <div class="error-message" id="hobbies-error"></div>
  
-      <label>Blood Group</label> 
-      <select name="blood"> 
+      <label>Blood Group *</label> 
+      <select id="blood" name="blood"> 
         <option value="">Select Blood Group</option> 
         <option>O+</option> 
         <option>O-</option> 
@@ -108,15 +121,234 @@ Blogging</label>
         <option>AB+</option> 
         <option>AB-</option> 
       </select> 
+      <div class="error-message" id="blood-error"></div>
  
       <label>Personal Website</label> 
-      <input type="url" name="website" placeholder="Enter your website URL"> 
+      <input type="url" id="website" name="website" placeholder="Enter your website URL"> 
  
       <div class="buttons"> 
-        <button type="submit">Submit Bio Data</button> 
-        <button type="reset" class="reset">Reset Form</button> 
+        <button type="submit">Update</button> 
+        <button type="reset" class="reset">Reset</button> 
+        <button type="button" class="delete">Delete</button> 
       </div> 
     </form> 
-  </div> 
+  </div>
+
+  <script>
+    document.getElementById('biodataForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent form submission
+      
+      // Clear previous errors
+      clearAllErrors();
+      
+      let hasErrors = false;
+      
+      // Check Profile Picture (required)
+      const profilePic = document.getElementById('profilePic');
+      if (!profilePic.files || profilePic.files.length === 0) {
+        showError('profilePic', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // Check Full Name (required)
+      const fullname = document.getElementById('fullname');
+      if (!fullname.value.trim()) {
+        showError('fullname', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // Check Date of Birth (required)
+      const dob = document.getElementById('dob');
+      if (!dob.value) {
+        showError('dob', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // Check Gender (required)
+      const genderSelected = document.querySelector('input[name="gender"]:checked');
+      if (!genderSelected) {
+        showError('gender', 'This is a required field.');
+        document.getElementById('gender-group').style.border = '1px solid #dc3545';
+        hasErrors = true;
+      }
+      
+      // Check Phone Number (required)
+      const phone = document.getElementById('phone');
+      if (!phone.value.trim()) {
+        showError('phone', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // Check Email (required)
+      const email = document.getElementById('email');
+      if (!email.value.trim()) {
+        showError('email', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // Check Education (required)
+      const education = document.getElementById('education');
+      if (!education.value.trim()) {
+        showError('education', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // Check Father's Name (required)
+      const father = document.getElementById('father');
+      if (!father.value.trim()) {
+        showError('father', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // Check Mother's Name (required)
+      const mother = document.getElementById('mother');
+      if (!mother.value.trim()) {
+        showError('mother', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // Check Address (required)
+      const address = document.getElementById('address');
+      if (!address.value.trim()) {
+        showError('address', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // Check Skills (required)
+      const skills = document.getElementById('skills');
+      if (!skills.value.trim()) {
+        showError('skills', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // Check Languages (required)
+      const languages = document.getElementById('languages');
+      if (!languages.value.trim()) {
+        showError('languages', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // Check Marital Status (required)
+      const maritalSelected = document.querySelector('input[name="marital"]:checked');
+      if (!maritalSelected) {
+        showError('marital', 'This is a required field.');
+        document.getElementById('marital-group').style.setProperty('border', '2px solid #dc3545', 'important');
+        hasErrors = true;
+      }
+      
+      // Check Hobbies (required)
+      const hobbiesSelected = document.querySelector('input[name="hobbies"]:checked');
+      if (!hobbiesSelected) {
+        showError('hobbies', 'This is a required field.');
+        document.getElementById('hobbies-group').style.setProperty('border', '2px solid #dc3545', 'important');
+        hasErrors = true;
+      }
+      
+      // Check Blood Group (required)
+      const blood = document.getElementById('blood');
+      if (!blood.value) {
+        showError('blood', 'This is a required field.');
+        hasErrors = true;
+      }
+      
+      // If no errors, form can be submitted
+      if (!hasErrors) {
+        alert('Form submitted successfully!');
+        // Uncomment the next line to actually submit the form
+        // this.submit();
+      }
+    });
+    
+    function showError(fieldId, message) {
+      const field = document.getElementById(fieldId);
+      const errorDiv = document.getElementById(fieldId + '-error');
+      
+      // Add red border to the field
+      if (field) {
+        field.style.setProperty('border', '2px solid #dc3545', 'important');
+      }
+      
+      // Show error message
+      if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+        errorDiv.style.color = '#dc3545';
+      }
+    }
+    
+    function clearAllErrors() {
+      // Clear all error messages
+      const errorMessages = document.querySelectorAll('.error-message');
+      errorMessages.forEach(function(error) {
+        error.style.display = 'none';
+        error.textContent = '';
+      });
+      
+      // Reset all field borders
+      const inputs = document.querySelectorAll('input, textarea, select');
+      inputs.forEach(function(input) {
+        input.style.removeProperty('border');
+      });
+      
+      // Reset gender group border
+      const genderGroup = document.getElementById('gender-group');
+      if (genderGroup) {
+        genderGroup.style.removeProperty('border');
+      }
+      
+      // Reset marital group border
+      const maritalGroup = document.getElementById('marital-group');
+      if (maritalGroup) {
+        maritalGroup.style.removeProperty('border');
+      }
+      
+      // Reset hobbies group border
+      const hobbiesGroup = document.getElementById('hobbies-group');
+      if (hobbiesGroup) {
+        hobbiesGroup.style.removeProperty('border');
+      }
+    }
+    
+    // Clear errors when user starts typing or selecting
+    document.querySelectorAll('input, textarea, select').forEach(function(field) {
+      field.addEventListener('input', function() {
+        this.style.removeProperty('border');
+        const errorDiv = document.getElementById(this.id + '-error');
+        if (errorDiv) {
+          errorDiv.style.display = 'none';
+        }
+      });
+    });
+    
+    // Clear gender error when radio button is selected
+    document.querySelectorAll('input[name="gender"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        const genderGroup = document.getElementById('gender-group');
+        const genderError = document.getElementById('gender-error');
+        if (genderGroup) genderGroup.style.removeProperty('border');
+        if (genderError) genderError.style.display = 'none';
+      });
+    });
+    
+    // Clear marital error when checkbox is selected
+    document.querySelectorAll('input[name="marital"]').forEach(function(checkbox) {
+      checkbox.addEventListener('change', function() {
+        const maritalGroup = document.getElementById('marital-group');
+        const maritalError = document.getElementById('marital-error');
+        if (maritalGroup) maritalGroup.style.removeProperty('border');
+        if (maritalError) maritalError.style.display = 'none';
+      });
+    });
+    
+    // Clear hobbies error when checkbox is selected
+    document.querySelectorAll('input[name="hobbies"]').forEach(function(checkbox) {
+      checkbox.addEventListener('change', function() {
+        const hobbiesGroup = document.getElementById('hobbies-group');
+        const hobbiesError = document.getElementById('hobbies-error');
+        if (hobbiesGroup) hobbiesGroup.style.removeProperty('border');
+        if (hobbiesError) hobbiesError.style.display = 'none';
+      });
+    });
+  </script>
 </body> 
 </html>

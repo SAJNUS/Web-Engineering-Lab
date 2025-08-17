@@ -137,12 +137,14 @@ $conn->close();
 <body> 
   <div class="container"> 
     <div class="header">
-      <h2>BIODATA</h2>
+      <div></div> <!-- Empty div for spacing -->
       <div class="user-info">
         <span>Welcome, <?php echo htmlspecialchars($_SESSION['full_name']); ?>!</span>
         <a href="logout.php" class="logout-btn">Logout</a>
       </div>
     </div>
+    
+    <h2>BIODATA</h2>
     
     <?php if (!empty($message)): ?>
         <div class="message <?php echo $messageType; ?>">
@@ -243,11 +245,11 @@ $conn->close();
       <input type="url" name="website" placeholder="Enter your website URL" value="<?php echo $biodata ? htmlspecialchars($biodata['website']) : ''; ?>"> 
  
       <div class="buttons"> 
-        <button type="submit"><?php echo $biodata ? 'Update Bio Data' : 'Submit Bio Data'; ?></button> 
+        <button type="submit"><?php echo $biodata ? 'Update' : 'Submit Bio Data'; ?></button> 
         <?php if ($biodata): ?>
-          <button type="button" class="reset" onclick="if(confirm('Are you sure you want to delete your biodata?')) { window.location.href='?action=delete'; }">Delete Bio Data</button>
+          <button type="button" class="delete" onclick="if(confirm('Are you sure you want to delete your biodata?')) { window.location.href='?action=delete'; }">Delete</button>
         <?php endif; ?>
-        <button type="reset" class="reset">Reset Form</button> 
+        <button type="reset" class="reset">Reset</button> 
       </div> 
     </form> 
   </div> 

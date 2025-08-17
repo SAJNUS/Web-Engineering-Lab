@@ -146,7 +146,8 @@ body {
 }
 
 .signup-btn:hover {
-    background: #0A3A8A;
+    background: #1266F1;
+    opacity: 0.75;
     box-shadow: 0 2px 8px rgba(18, 102, 241, 0.2);
 }
 
